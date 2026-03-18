@@ -12,7 +12,6 @@ body{
     color:white;
     text-align:center;
 
-    /* romantic background */
     background: radial-gradient(circle at center, #3b1d2a, #0f0f0f);
 }
 
@@ -27,16 +26,18 @@ h1{
     line-height:1.6;
 }
 
-/* slideshow */
+/* video container */
 .slideshow{
-    position:relative;
     width:95%;
     height:65vh;
     margin:20px auto;
     border-radius:15px;
     overflow:hidden;
 
-    /* SOFT ROMANTIC SIDES */
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
     background:
       linear-gradient(to right,
         rgba(255,105,135,0.25),
@@ -44,26 +45,14 @@ h1{
         rgba(0,0,0,0.15) 75%,
         rgba(255,105,135,0.25)
       );
-
-    display:flex;
-    align-items:center;
-    justify-content:center;
 }
 
-/* image */
-.slide{
-    position:absolute;
+/* video styling */
+video{
     max-width:100%;
     max-height:100%;
-    opacity:0;
-    transition:opacity 1s ease-in-out;
     border-radius:10px;
-
     box-shadow:0 0 40px rgba(255,120,150,0.4);
-}
-
-.slide.active{
-    opacity:1;
 }
 
 button{
@@ -91,75 +80,27 @@ button{
 </div>
 
 <div class="slideshow">
-    <img class="slide active" src="silout.jpg">
-    <img class="slide" src="propose.jpg">
-    <img class="slide" src="jump.jpg">
-    <img class="slide" src="pair.jpg">
-    <img class="slide" src="snow.jpg">
-    <img class="slide" src="piono.jpg">
-    <img class="slide" src="maduve.jpg">
+    <!-- YOUR VIDEO -->
+    <video id="myVideo">
+        <source src="love.mp4" type="video/mp4">
+    </video>
 </div>
 
 <div>
-    <button onclick="pauseSlides()">ನಿಲ್ಸು ಪೋಟೋವಾ ⏸️</button>
-    <button onclick="startSlides()">ಓಡ್ಸು ಪೋಟೋವಾ ▶️</button>
-</div>
-
-<audio id="bgMusic" src="usiru.mp3"></audio>
-
-<div>
-    <button onclick="playMusic()">ಹಾಡು ಕೇಳೆ 🎵</button>
+    <button onclick="pauseVideo()">ನಿಲ್ಸು ⏸️</button>
+    <button onclick="playVideo()">ಓಡ್ಸು ▶️</button>
 </div>
 
 <script>
-var slides = document.getElementsByClassName("slide");
-var index = 0;
-var timeoutId = null;
-var music = document.getElementById("bgMusic");
+var video = document.getElementById("myVideo");
 
-/* slide change */
-function nextSlide(){
-    slides[index].classList.remove("active");
-    index = (index + 1) % slides.length;
-    slides[index].classList.add("active");
-
-    timeoutId = setTimeout(nextSlide, 2000);
+function playVideo(){
+    video.play();
 }
 
-/* PLAY EVERYTHING */
-function startSlides(){
-    pauseSlides(); // stop old
-
-    timeoutId = setTimeout(nextSlide, 2000);
-
-    if(music){
-        music.play();
-    }
-
-    console.log("PLAY");
+function pauseVideo(){
+    video.pause();
 }
-
-/* PAUSE EVERYTHING */
-function pauseSlides(){
-    clearTimeout(timeoutId);
-    timeoutId = null;
-
-    if(music){
-        music.pause();
-    }
-
-    console.log("PAUSE");
-}
-
-/* MUSIC BUTTON */
-function playMusic(){
-    if(music){
-        music.play();
-    }
-}
-
-/* auto start slideshow (without music) */
-timeoutId = setTimeout(nextSlide, 2000);
 </script>
 
 </body>
