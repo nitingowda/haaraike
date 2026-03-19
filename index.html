@@ -27,7 +27,6 @@ h1{
 
 /* container */
 .slideshow{
-    position:relative;
     width:95%;
     height:65vh;
     margin:20px auto;
@@ -52,30 +51,7 @@ iframe{
     width:100%;
     height:100%;
     border:none;
-    display:none;
     border-radius:10px;
-}
-
-/* overlay */
-.overlay{
-    position:absolute;
-    width:100%;
-    height:100%;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-}
-
-/* button */
-.playBtn{
-    padding:15px 25px;
-    font-size:18px;
-    border:none;
-    border-radius:12px;
-    cursor:pointer;
-    background:white;
-    color:#333;
-    box-shadow:0 0 25px rgba(255,120,150,0.4);
 }
 </style>
 </head>
@@ -85,41 +61,15 @@ iframe{
 <h1>Happy Valentine's Day ನನ್ನೊಲವೇ ❤️</h1>
 
 <div class="message">
-ನಿನ್ನ ಕಂಗಳ ನೋಟದಲಿ<br>
-ಬೆಳಗುತಿದೆ ಎನ್ನುಸಿರೆಂಬ ದೀವಿಗೆ<br>
-ಆರದದು ಎಂದಿಗೂ,<br>
-ನಿನ್ನೊಲವೆಂಬ ಸುದೆಯ ಎರಕವಿರಲು ❤️
+❤️ ಹುಟ್ಟು ಹಬ್ಬದ ನಲ್ಮೆಯ ಹಾರಯ್ಕೆಗಳುು ❤️
 </div>
 
 <div class="slideshow">
-
-    <!-- PLAY BUTTON -->
-    <div class="overlay" id="overlay">
-        <button class="playBtn" onclick="startVideo()">
-            ▶️ ವಿಡಿಯೋ ನೋಡಿ ❤️
-        </button>
-    </div>
-
-    <!-- GOOGLE DRIVE VIDEO -->
-    <iframe id="videoFrame"
-        src=""
+    <iframe
+        src="https://drive.google.com/file/d/1qm34Sk7UVoeMKRJNWYSQrKXKfjMaAw7g/preview"
         allow="autoplay">
     </iframe>
-
 </div>
-
-<script>
-function startVideo(){
-    var frame = document.getElementById("videoFrame");
-    var overlay = document.getElementById("overlay");
-
-    // YOUR FILE (converted to preview)
-    frame.src = "https://drive.google.com/file/d/1qm34Sk7UVoeMKRJNWYSQrKXKfjMaAw7g/preview";
-
-    frame.style.display = "block";
-    overlay.style.display = "none";
-}
-</script>
 
 </body>
 </html>
