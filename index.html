@@ -12,6 +12,7 @@ body{
     color:white;
     text-align:center;
     background: radial-gradient(circle at center, #3b1d2a, #0f0f0f);
+    overflow:hidden;
 }
 
 h1{
@@ -53,6 +54,26 @@ iframe{
     border:none;
     border-radius:10px;
 }
+
+/* floating hearts */
+.heart {
+    position: fixed;
+    bottom: -20px;
+    font-size: 20px;
+    animation: floatUp linear infinite;
+    opacity: 0.7;
+}
+
+@keyframes floatUp {
+    0% {
+        transform: translateY(0) scale(1);
+        opacity: 0.7;
+    }
+    100% {
+        transform: translateY(-110vh) scale(1.5);
+        opacity: 0;
+    }
+}
 </style>
 </head>
 
@@ -70,6 +91,26 @@ iframe{
         allow="autoplay">
     </iframe>
 </div>
+
+<script>
+function createHeart() {
+    const heart = document.createElement("div");
+    heart.classList.add("heart");
+    heart.innerHTML = "❤️";
+
+    heart.style.left = Math.random() * 100 + "vw";
+    heart.style.animationDuration = (3 + Math.random() * 3) + "s";
+    heart.style.fontSize = (15 + Math.random() * 20) + "px";
+
+    document.body.appendChild(heart);
+
+    setTimeout(() => {
+        heart.remove();
+    }, 6000);
+}
+
+setInterval(createHeart, 500);
+</script>
 
 </body>
 </html>
